@@ -14,26 +14,29 @@ const Hero = () => {
   ]
 
   return (
-    <section className="bg-gradient-to-br from-primary-50 to-white py-12 lg:py-20 overflow-hidden">
+    <section className="bg-gradient-to-br from-primary-50 to-white py-8 lg:py-12 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Centered Badge */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium">
+            <Sparkles className="w-4 h-4 mr-2" />
+            AI-Powered Business Solutions
+          </div>
+        </div>
+
         {/* Top Section: Text and Video at Same Level */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+        <div className="grid lg:grid-cols-2 gap-8 items-center mb-8">
           {/* Left Content */}
           <div className="text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4 mr-2" />
-              AI-Powered Business Solutions
-            </div>
 
             {/* Headline */}
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 animate-fade-in">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-3 animate-fade-in">
               Transform Your Business with
               <span className="text-primary-600 block">AI Technology</span>
             </h1>
 
             {/* Description */}
-            <p className="text-xl text-gray-600 mb-6 max-w-2xl animate-slide-up">
+            <p className="text-xl text-gray-600 mb-4 max-w-2xl animate-slide-up">
               Discover professional website templates, intelligent chatbots, voice assistants, 
               and AI telephony systems designed to elevate your business and automate 
               customer interactions.
@@ -133,14 +136,14 @@ const Hero = () => {
 
         {/* Bottom Section: Chatbot Interface - Full Width */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">Try Our AI Assistant</h3>
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
+            <div className="text-center mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Try Our AI Assistant</h3>
               <p className="text-gray-600">Ask anything about our services and get instant answers</p>
             </div>
 
             {/* Chat Input */}
-            <div className="relative mb-6">
+            <div className="relative mb-4">
               <div className="flex items-center bg-gray-50 rounded-xl border border-gray-200 p-4">
                 <Search className="w-5 h-5 text-gray-400 mr-3" />
                 <input
@@ -162,32 +165,32 @@ const Hero = () => {
             </div>
 
             {/* Chat Mode Buttons */}
-            <div className="flex items-center justify-center space-x-6 mb-6">
+            <div className="flex items-center justify-center space-x-4 mb-4">
               {chatModes.map((mode) => {
                 const Icon = mode.icon
                 return (
                   <button
                     key={mode.id}
                     onClick={() => setActiveMode(mode.id)}
-                    className={`flex items-center space-x-3 px-6 py-3 rounded-lg transition-all duration-200 ${
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                       activeMode === mode.id
                         ? 'bg-primary-600 text-white shadow-lg'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
-                    <span className="font-medium">{mode.label}</span>
+                    <Icon className="w-4 h-4" />
+                    <span className="text-sm font-medium">{mode.label}</span>
                   </button>
                 )
               })}
             </div>
 
             {/* Quick Actions */}
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-2">
               {['Website Templates', 'AI Chatbots', 'Voice Assistants', 'Telephony'].map((action) => (
                 <button
                   key={action}
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full transition-colors"
+                  className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm rounded-full transition-colors"
                 >
                   {action}
                 </button>
