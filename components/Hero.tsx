@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 import { ArrowRight, Sparkles, MessageCircle, Mic, Phone, Search } from 'lucide-react'
 
