@@ -11,6 +11,7 @@ const Header = () => {
     { name: 'Chatbots', href: '#chatbots' },
     { name: 'Voice AI', href: '#voice-ai' },
     { name: 'Telephony', href: '#telephony' },
+    { name: 'Pricing', href: '#pricing' },
     { name: 'Contact', href: '#contact' },
   ]
 
@@ -38,8 +39,11 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            <button className="text-gray-700 hover:text-primary-600 px-4 py-2 text-sm font-medium transition-colors duration-200">
+              Log In
+            </button>
             <button className="btn-primary">
               Get Started
             </button>
@@ -70,7 +74,10 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="pt-4">
+              <div className="pt-4 space-y-2">
+                <button className="text-gray-700 hover:text-primary-600 w-full text-left px-3 py-2 text-base font-medium">
+                  Log In
+                </button>
                 <button className="btn-primary w-full">
                   Get Started
                 </button>
