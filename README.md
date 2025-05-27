@@ -1,4 +1,4 @@
-# TechSolutions - Modern Business Website
+# Koranko - Modern Business Website
 
 A modern, responsive business website built with Next.js and Tailwind CSS, showcasing AI-powered business solutions including website templates, chatbots, voice assistants, and telephony systems.
 
@@ -69,7 +69,7 @@ npm run dev
 ## Sections
 
 ### Header
-- Company logo (TechSolutions)
+- Company logo (Koranko)
 - Navigation menu (Templates, Chatbots, Voice AI, Telephony, Contact)
 - Call-to-action button
 - Mobile-responsive hamburger menu
@@ -180,7 +180,7 @@ This project is licensed under the MIT License.
 ## Support
 
 For support and questions, please contact:
-- Email: hello@techsolutions.com
+- Email: hello@koranko.com
 - Phone: +1 (555) 123-4567
 
 ---

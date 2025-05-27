@@ -29,7 +29,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4">TechSolutions</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Koranko</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Empowering businesses with cutting-edge AI technology and professional web solutions. 
               Transform your operations with our intelligent automation tools.
@@ -39,7 +39,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Mail className="w-5 h-5 text-primary-400 mr-3" />
-                <span className="text-gray-300">hello@techsolutions.com</span>
+                <span className="text-gray-300">hello@koranko.com</span>
               </div>
               <div className="flex items-center">
                 <Phone className="w-5 h-5 text-primary-400 mr-3" />
@@ -129,7 +129,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row md:items-center md:justify-between">
           <p className="text-gray-400 text-sm">
-            © 2024 TechSolutions. All rights reserved.
+            © 2024 Koranko. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <a href="#privacy" className="text-gray-400 hover:text-primary-400 text-sm transition-colors duration-200">

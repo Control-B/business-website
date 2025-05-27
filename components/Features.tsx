@@ -46,21 +46,35 @@ const Features = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => {
             const IconComponent = feature.icon
+            // Define colorful icon colors for each feature
+            const iconColors = [
+              'text-blue-500',    // Globe - Blue
+              'text-green-500',   // MessageCircle - Green  
+              'text-purple-500',  // Mic - Purple
+              'text-orange-500'   // Phone - Orange
+            ]
+            const iconBgColors = [
+              'bg-blue-50 group-hover:bg-blue-100',    // Globe background
+              'bg-green-50 group-hover:bg-green-100',   // MessageCircle background
+              'bg-purple-50 group-hover:bg-purple-100', // Mic background
+              'bg-orange-50 group-hover:bg-orange-100'  // Phone background
+            ]
+            
             return (
-              <div key={index} className="card group hover:scale-105 transition-transform duration-300">
-                <div className="flex items-center justify-center w-12 h-12 bg-primary-100 rounded-lg mb-4 group-hover:bg-primary-200 transition-colors duration-300">
-                  <IconComponent className="w-6 h-6 text-primary-600" />
+              <div key={index} className="bg-blue-600 text-white p-6 rounded-xl shadow-lg group hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <div className={`flex items-center justify-center w-12 h-12 ${iconBgColors[index]} rounded-lg mb-4 transition-colors duration-300`}>
+                  <IconComponent className={`w-6 h-6 ${iconColors[index]}`} />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-blue-100 mb-4 leading-relaxed">
                   {feature.description}
                 </p>
                 <ul className="space-y-2">
                   {feature.features.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-center text-sm text-gray-500">
-                      <div className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></div>
+                    <li key={itemIndex} className="flex items-center text-sm text-blue-200">
+                      <div className="w-1.5 h-1.5 bg-blue-300 rounded-full mr-2"></div>
                       {item}
                     </li>
                   ))}

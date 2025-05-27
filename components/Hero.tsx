@@ -1,17 +1,68 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { ArrowRight, Sparkles, MessageCircle, Mic, Phone, Search } from 'lucide-react'
 
 const Hero = () => {
   const [chatInput, setChatInput] = useState('')
   const [activeMode, setActiveMode] = useState('text')
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const chatModes = [
     { id: 'text', icon: MessageCircle, label: 'Text Chat' },
     { id: 'voice', icon: Mic, label: 'Voice Mode' },
     { id: 'phone', icon: Phone, label: 'Phone Call' }
   ]
+
+  // AI-focused videos similar to Salesforce style
+  const aiVideos = [
+    {
+      id: 'ai-chatbot-demo',
+      title: 'AI Chatbot in Action',
+      description: 'See how our AI chatbots handle customer conversations naturally',
+      url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      thumbnail: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop'
+    },
+    {
+      id: 'voice-ai-demo',
+      title: 'Voice AI Technology',
+      description: 'Experience natural voice interactions with our AI assistants',
+      url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      thumbnail: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop'
+    },
+    {
+      id: 'ai-telephony-demo',
+      title: 'AI Telephony System',
+      description: 'Smart call routing and automated customer service',
+      url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+      thumbnail: 'https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop'
+    },
+    {
+      id: 'ai-automation-demo',
+      title: 'Business AI Automation',
+      description: 'Streamline operations with intelligent automation',
+      url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+      thumbnail: 'https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop'
+    }
+  ]
+
+  // Auto-advance videos every 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCurrentVideoIndex((prev) => (prev + 1) % aiVideos.length)
+    }, 5000)
+
+    return () => clearTimeout(timer)
+  }, [currentVideoIndex, aiVideos.length])
+
+  const handleVideoSelect = (index: number) => {
+    setCurrentVideoIndex(index)
+  }
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying)
+  }
 
   return (
     <section className="bg-gradient-to-br from-primary-50 to-white py-8 lg:py-12 overflow-hidden">
@@ -55,78 +106,90 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Video Section */}
+          {/* Right Video Player Section */}
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl overflow-hidden shadow-2xl">
-              {/* Video Container */}
-              <div className="aspect-video relative">
-                {/* Placeholder for video - you can replace this with an actual video */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 flex items-center justify-center">
-                  {/* Mock Dashboard UI */}
-                  <div className="w-full h-full p-8 relative">
-                    {/* Top Cards */}
-                    <div className="absolute top-6 left-6">
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 mb-4">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                          <span className="text-white text-sm font-medium">Marketing</span>
-                        </div>
-                        <div className="mt-2 text-white text-xs opacity-80">
-                          <div>Campaign Analytics</div>
-                          <div>Email: 94.2%</div>
-                          <div>Social: 87.1%</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="absolute bottom-6 left-6">
-                      <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                          <span className="text-white text-sm font-medium">Sales</span>
-                        </div>
-                        <div className="mt-2 text-white text-xs opacity-80">
-                          <div>Pipeline Value by Account</div>
-                          <div className="flex space-x-1 mt-1">
-                            <div className="w-8 h-1 bg-green-400 rounded"></div>
-                            <div className="w-6 h-1 bg-green-300 rounded"></div>
-                            <div className="w-4 h-1 bg-green-200 rounded"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Center Content */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="text-4xl md:text-6xl font-bold mb-4 opacity-20">
-                          marketing
-                        </div>
-                        <div className="text-2xl md:text-4xl font-bold mb-2">
-                          See tangible results across sales
-                        </div>
-                        <div className="text-xl md:text-2xl opacity-80">
-                          service
-                        </div>
-                        <div className="text-xl md:text-2xl font-bold mt-2">
-                          commerce
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Play Button */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <button className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 group">
-                        <div className="w-0 h-0 border-l-[12px] border-l-white border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1 group-hover:scale-110 transition-transform"></div>
-                      </button>
+            <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl overflow-hidden shadow-2xl">
+              {/* Video Preview Container */}
+              <div className="aspect-video relative cursor-pointer" onClick={togglePlay}>
+                <img
+                  key={aiVideos[currentVideoIndex].id}
+                  src={aiVideos[currentVideoIndex].thumbnail}
+                  alt={aiVideos[currentVideoIndex].title}
+                  className="w-full h-full object-cover transition-all duration-500"
+                />
+                
+                {/* Play Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className={`bg-white/90 backdrop-blur-sm rounded-full p-4 transition-all duration-300 ${
+                    isPlaying ? 'scale-0 opacity-0' : 'scale-100 opacity-100 hover:scale-110'
+                  }`}>
+                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <div className="w-0 h-0 border-l-[6px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-1"></div>
                     </div>
                   </div>
                 </div>
+
+                {/* Simulated Progress Bar */}
+                {isPlaying && (
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/20">
+                    <div 
+                      className="h-full bg-blue-500 transition-all duration-[5000ms] ease-linear"
+                      style={{ width: isPlaying ? '100%' : '0%' }}
+                    ></div>
+                  </div>
+                )}
+                {/* Video Overlay with Title and Description */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-white text-lg font-semibold mb-1">
+                      {aiVideos[currentVideoIndex].title}
+                    </h3>
+                    <p className="text-gray-200 text-sm">
+                      {aiVideos[currentVideoIndex].description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Video Navigation Dots */}
+                <div className="absolute bottom-4 right-4 flex space-x-2">
+                  {aiVideos.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleVideoSelect(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === currentVideoIndex
+                          ? 'bg-white scale-125'
+                          : 'bg-white/50 hover:bg-white/75'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Video Thumbnails Row */}
+              <div className="absolute -bottom-16 left-0 right-0 flex justify-center space-x-2">
+                {aiVideos.map((video, index) => (
+                  <button
+                    key={video.id}
+                    onClick={() => handleVideoSelect(index)}
+                    className={`relative w-16 h-9 rounded-lg overflow-hidden transition-all duration-200 ${
+                      index === currentVideoIndex
+                        ? 'ring-2 ring-blue-400 scale-110'
+                        : 'opacity-70 hover:opacity-100'
+                    }`}
+                  >
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
               </div>
 
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full animate-bounce"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-pink-400 rounded-full animate-pulse"></div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-400 rounded-full animate-pulse"></div>
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-purple-400 rounded-full animate-bounce"></div>
             </div>
 
             {/* Background Decorations */}
@@ -199,6 +262,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+
     </section>
   )
 }

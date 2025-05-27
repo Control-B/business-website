@@ -22,7 +22,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-primary-600">TechSolutions</h1>
+              <h1 className="text-2xl font-bold text-primary-600">Koranko</h1>
             </div>
           </div>
 
